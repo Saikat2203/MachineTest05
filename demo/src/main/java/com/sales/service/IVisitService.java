@@ -9,5 +9,9 @@ public interface IVisitService {
 	Visit addVisitDetails(Visit visit);
 	
 	List<Visit> getAllVisits();
+	
+	Visit deleteVisitById(Integer id);
+	
+	Visit getVisitById(Integer id);
 
 }

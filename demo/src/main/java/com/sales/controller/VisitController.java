@@ -6,7 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -40,4 +42,24 @@ public class VisitController {
 		}
 	}
 	
+	@DeleteMapping("{id}") 
+	public ResponseEntity<?> deleteVisitById(@PathVariable Integer id) {
+		Visit deleteVisit = visitService.deleteVisitById(id);
+		if(deleteVisit == null) {
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Visit with ID: " + id + " doesn't exist!!!");
+		} else {
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Visit has been deleted successfully");
+		}
+	}
+	
+	@GetMapping("{id}")
+	public ResponseEntity<?> getVisitById(@PathVariable Integer id) {
+		Visit visit = visitService.getVisitById(id);
+		
+		if(visit == null) {
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Visit with ID: " + id + " doesn't exist!!!");
+		} else {
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(visit);
+		}
+	}
 }

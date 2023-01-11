@@ -26,4 +26,21 @@ public class VisitServiceImpl implements IVisitService {
 		return visitDAO.findAll();
 	}
 
+	// method to delete a visit
+	@Override
+	public Visit deleteVisitById(Integer id) {
+		Visit delVisit = visitDAO.findById(id).orElse(null);
+		
+		if(delVisit != null) {
+			delVisit.setIs_deleted(true);
+			visitDAO.save(delVisit);
+		}
+		return delVisit;
+	}
+
+	@Override
+	public Visit getVisitById(Integer id) {
+		return visitDAO.findById(id).orElse(null);
+	}
+
 }
