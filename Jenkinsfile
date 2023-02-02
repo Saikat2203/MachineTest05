@@ -7,8 +7,10 @@ pipeline {
             }
         }
         stage('Check files') {
-            sh ''' pwd
+            steps {
+                sh ''' pwd
             ls '''
+            }
         }
     }
 }
