@@ -15,6 +15,7 @@ pipeline {
         stage('Build') {
             steps {
                 sh ''' echo "Building npm"
+                cd /var/lib/jenkins/workspace/Check_npm_build_pipeline/SalesTeamMonitorSystem-Frontend/
                 npm install '''
             }
         }
