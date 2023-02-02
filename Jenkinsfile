@@ -12,5 +12,11 @@ pipeline {
             ls '''
             }
         }
+        stage('Build') {
+            steps {
+                sh ''' echo "Building npm"
+                npm install '''
+            }
+        }
     }
 }
